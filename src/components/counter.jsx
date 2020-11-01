@@ -17,6 +17,10 @@ class Counter extends Component {
     return classes;
   }
 
+  handleIncrement = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
   renderTags() {
     if (this.state.tags.length === 0) {
       return <p>No tags found....</p>;
@@ -24,7 +28,12 @@ class Counter extends Component {
       return (
         <div>
           <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-          <button className="btn btn-secondary btn-sm">Increment </button>
+          <button
+            onClick={this.handleIncrement}
+            className="btn btn-secondary btn-sm"
+          >
+            Increment{" "}
+          </button>
           <ul>
             {this.state.tags.map((tag) => (
               <li key={tag}>{tag}</li>
